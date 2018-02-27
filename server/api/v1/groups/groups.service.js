@@ -1,11 +1,9 @@
 const groups = require('./groups.entity');
+const logger = require('../../../logger');
 
 
 const getGroupInfo = function (event, count, project, cb) {
-  console.log('inside getGroupinfo', count, project);
-  if (count == 1) {
-    console.log('hello');
-
+  if (count === 1) {
     const obj = {};
     groups.find({})
       .exec((err, group) => {
@@ -15,8 +13,6 @@ const getGroupInfo = function (event, count, project, cb) {
             obj.projectName = event.name;
             obj.projectId = event.project_id;
             obj.userName = event.owner_name;
-            console.log('obj', obj);
-
             cb(null, obj);
           }
         });
@@ -25,7 +21,6 @@ const getGroupInfo = function (event, count, project, cb) {
         }
       });
   } else {
-    console.log('in else');
     cb({ error: 'project not found' });
   }
 };

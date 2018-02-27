@@ -1,0 +1,43 @@
+<div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource">
+  
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="groupName">
+        <mat-header-cell *matHeaderCellDef>Group </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.groupName}} </mat-cell>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="projectName">
+        <mat-header-cell *matHeaderCellDef> Project </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.projectName}} </mat-cell>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <!-- <ng-container matColumnDef="projectId">
+        <mat-header-cell *matHeaderCellDef> ProjectId </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.projectId}} </mat-cell>
+      </ng-container> -->
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="userName">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.userName}} </mat-cell>
+      </ng-container>
+      <!-- <ng-container>
+          <mat-header-cell> STATUS </mat-header-cell>
+          <mat-cell > Clickme </mat-cell>
+        </ng-container> -->
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row (click)="getRecord(element.projectId)"  *matRowDef="let element; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  
+  
+  <!-- Copyright 2018 Google Inc. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->

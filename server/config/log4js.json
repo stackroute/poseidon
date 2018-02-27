@@ -1,0 +1,20 @@
+{
+    "appenders": {
+        "console": {
+            "type": "console"
+        },
+        "poseidon": 
+        { "type": "file", 
+          "filename": "application.log" 
+        }
+    },
+    "categories": {
+        "default": {
+            "appenders": [
+                "console",
+                "poseidon"
+            ],
+            "level": "DEBUG"
+        }
+    }
+}

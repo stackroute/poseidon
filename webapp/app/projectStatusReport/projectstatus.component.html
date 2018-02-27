@@ -1,0 +1,44 @@
+<mat-card class="example-card" *ngIf="reportData">
+        <mat-card-header>
+          <mat-card-title class="card-title">{{reportData.userName}}</mat-card-title>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-subtitle class="card-subtitle">{{reportData.projectId}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://about.gitlab.com/images/logo.png" alt="Photo of a Shiba Inu">
+
+        <mat-card-content class="content">
+                
+
+          <ul>
+              <li><mat-card-title class="card-title">Forked Status</mat-card-title>
+                <mat-card-subtitle class="card-subtitle">{{reportData.forkedStatus}}</mat-card-subtitle>
+              </li>
+              <li><mat-card-title class="card-title">git Url</mat-card-title>
+                <mat-card-subtitle class="card-subtitle">{{reportData.gitUrl}}</mat-card-subtitle>
+              </li>
+              <li><mat-card-title class="card-title">Submission Status</mat-card-title>
+                <mat-card-subtitle class="card-subtitle">{{reportData.submission_status}}</mat-card-subtitle>
+              </li>
+              <li *ngIf="reportData.submission_Date"><mat-card-title class="card-title">Submission Date</mat-card-title>
+                <mat-card-subtitle class="card-subtitle">{{reportData.submission_Date}}</mat-card-subtitle>
+              </li>
+              <li *ngIf="reportData.submission_Time"><mat-card-title class="card-title">Submission_Time</mat-card-title>
+                <mat-card-subtitle class="card-subtitle">{{reportData.submission_Time}}</mat-card-subtitle>
+              </li>
+              <li><mat-card-title class="card-title">Issues Opened</mat-card-title>
+                <mat-card-subtitle class="card-subtitle">{{reportData.issuesOpened}}</mat-card-subtitle>
+              </li>
+              <li><mat-card-title class="card-title">Issues Closed</mat-card-title>
+                <mat-card-subtitle class="card-subtitle">{{reportData.issuesClosed}}</mat-card-subtitle>
+              </li>
+                
+              <!-- <li>git Url: {{reportData.gitUrl}}</li>
+              <li>Submission Status: {{reportData.submission_status}}</li>
+              <li>Submission Date: {{reportData.submission_Date}}</li>
+              <li>Submission Time: {{reportData.submission_Time}}</li>
+              <li>Issues Opened: {{reportData.issuesOpened}}</li>
+              <li>Issues Closed: {{reportData.issuesClosed}}</li> -->
+
+          </ul>
+        </mat-card-content>
+</mat-card>

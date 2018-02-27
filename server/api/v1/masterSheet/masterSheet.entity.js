@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
+
 const masterSchema = new Schema({
   groupName: String,
   projectName: String,

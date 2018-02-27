@@ -1,15 +1,15 @@
 const projects = require('./projects.entity');
+const logger = require('../../../logger');
 
 
 const checkProject = function (event, cb) {
-  console.log('inside check project');
-  // console.log('event again   ', event)
   projects.find({ projectName: event.name })
     .exec((err, project) => {
-      if (err) { console.log('err', err), cb(err); } else {
+      if (err) {
+        logger.error('err', err);
+        cb(err);
+      } else {
         const count = project.length;
-        console.log('count', count);
-        console.log('project', project);
         cb(null, count, project);
       }
     });
