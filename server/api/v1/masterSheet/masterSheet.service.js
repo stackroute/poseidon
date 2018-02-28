@@ -1,6 +1,9 @@
 const Sheet = require('./masterSheet.entity');
 const logger = require('../../../logger');
 
+
+//Function to insert the created member info, only if it is not present in the database
+//Else will update the data already in the database
 const insertMember = function (member, cb) {
   const sheet = new Sheet();
 
@@ -15,8 +18,8 @@ const insertMember = function (member, cb) {
   sheet.issues_opened = member.issues_opened;
   sheet.issues_closed = member.issues_closed;
 
-
-  Sheet.find({ userName: member.userName })
+  //Look for the username if already present or not
+  Sheet.find({ userName: member.userName, projectName: member.projectName })
     .exec((err, item) => {
       if (err) {
         cb(err);

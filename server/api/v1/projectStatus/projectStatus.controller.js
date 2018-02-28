@@ -2,7 +2,7 @@ const async = require('async');
 const logger = require('../../../logger');
 const {getProjectDetails, getParticularCommitInfo, getParticularIssueInfo} = require('./projectDetails');
 
-
+//Main driver function to get the status report of the required user
 function projectStatusReport(projectId, cb) {
     async.waterfall([
         getProjectDetails.bind(null,projectId),

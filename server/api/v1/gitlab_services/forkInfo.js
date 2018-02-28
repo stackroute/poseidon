@@ -1,6 +1,7 @@
 const { getProject } = require('./lib');
 const logger = require('../../../logger');
 
+//Function to attach Forked status of the project
 const checkForkedStatus = function (member, cb) {
   const obj = member;
   getProject(obj.projectId, (err, result) => {

@@ -1,17 +1,19 @@
 const {getProject, getIssues, getRepoCommits} = require('../gitlab_services/lib')
 const logger = require('../../../logger');
 
-
+//Function to get project details using projectId
 function getProjectDetails(projectId, cb){
     const obj = {};
     getProject(projectId, (err, result)=>{
-        // logger.info(result);
-        if(Object.prototype.hasOwnProperty.call(result, 'forked_from_project')){
+        logger.info("msg",result);
+        if(err){
+          cb(err);
+        }else if(Object.prototype.hasOwnProperty.call(result, 'forked_from_project')){
             obj['projectId'] = result.id;
             obj['userName'] = result.owner.username;
             obj['forkedStatus'] = 'yes';
             obj['gitUrl'] = result['http_url_to_repo'];
-            logger.info('obj', obj);
+            // logger.info('obj', obj);
             cb(null, obj);
         } else {
             obj['projectId'] = result.id;
@@ -34,7 +36,7 @@ const uniqueName = uniqueArr(myArr);
 return myArr.filter((obj, index) => uniqueName.indexOf(obj[prop]) === index);
 }
   
-  
+//Function to get commit info for a particular user
 function getParticularCommitInfo(report, cb){
     const temp = report;
     if (temp.forkedStatus === 'yes') {
@@ -73,6 +75,7 @@ function getParticularCommitInfo(report, cb){
       }
 }
 
+//Function tp get Particular Open and close Issue counts
 function getParticularIssueInfo(report, cb){
     const temp = report;
     if (temp.forkedStatus === 'yes') {

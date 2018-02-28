@@ -26,7 +26,7 @@ export class ProjectStatusComponent implements OnInit, AfterContentInit {
     }
 
     ngOnInit(){
-        console.log(this.reportData)
+        // console.log(this.reportData)
         this.masterService.changedResults.subscribe(res =>{
             this.projectStatus.getProjectReport(res).subscribe(response =>{
                 console.log("coming res",response);

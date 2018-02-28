@@ -7,6 +7,8 @@ const { checkForkedStatus } = require('../gitlab_services/forkInfo');
 const { getIssueCount } = require('../gitlab_services/issueInfo');
 const logger = require('../../../logger');
 
+
+// Main driver function to create the required sheet to be inserted into the database
 function masterSheetCreator(event, cb) {
   async.waterfall([
     projectService.checkProject.bind(null, event),

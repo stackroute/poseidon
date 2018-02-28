@@ -1,6 +1,8 @@
 const { getIssues } = require('./lib');
 const logger = require('../../../logger');
 
+
+//Function to attach count of Open and close Issues
 const getIssueCount = function (member, cb) {
   const obj = member;
   if (obj.forked_status === 'yes') {

@@ -52,14 +52,16 @@ router.get('/getMasterList', (req,res)=>{
   }
 })
 
+//Router to get the project Report wrt the project ID
 router.get('/getProjectReport/:projId', (req,res)=>{
   try {
     logger.info(req.params.projId);
     ProjectStatus.projectStatusReport(req.params.projId, (err, result) => {
       if(err){
+        logger.error("Error in api router",err);
         res.send(err)
       } else {
-        res.json(result);
+        res.send(result);
       }
     })
   } catch (err){
@@ -76,6 +78,8 @@ router.post('/addProjects', (req, res) => {
   });
 });
 
+
+// Router listening to the webhook events
 router.post('/webhooks', (req, res) => {
   try {
     logger.info('req.body', req.body);
@@ -89,6 +93,8 @@ router.post('/webhooks', (req, res) => {
           res.end();
         }
       });
+    } else if(req.body.event_name ==='project_destroy') {
+      logger.info("will do it later")
     } else {
       res.end();
     }

@@ -4,15 +4,21 @@ const logger = require('../../../logger');
 const TOKEN = '525b4f45ec945e1106298e83331c152e8ec236f47b568fd8fffc0e2d2df6b10b';
 const BASE_URL = 'https://gitlab-dev.stackroute.in/api/v3';
 
+
+//Function to get project Details using the gitlab API
 function getProject(projId, cb) {
-  request(`${BASE_URL}/projects/${projId}/?access_token=${TOKEN}`)
+  request.get(`${BASE_URL}/projects/${projId}/?access_token=${TOKEN}`)
     .end((err, res) => {
-      if (err) { logger.error(err); cb(err); }
+      if (err) {
+        logger.error("error in gitlab api",err); 
+        return cb(err); 
+      }
+      
       cb(null, res.body);
     });
 }
 
-
+//Function to search for a group using the gitlab API 
 function searchForGroup(groupName, cb) {
   request.get(`${BASE_URL}/groups/?search=${groupName}`)
     .set('Authorization', `Bearer ${TOKEN}`)
@@ -22,6 +28,8 @@ function searchForGroup(groupName, cb) {
     });
 }
 
+
+//Function to get group members using the gitlab API
 function getGroupMembers(groupID, cb) {
   request.get(`${BASE_URL}/groups/${groupID}/members`)
     .query({ per_page: 200 })
@@ -66,6 +74,7 @@ function addGroupAsCollaboratorToProject(projectId, groupId, groupAccess, cb) {
     });
 }
 
+//Function to search for project using projectName
 function searchForProject(projectName, cb) {
   logger.info(projectName);
   request.get(`${BASE_URL}/projects/all?access_token=${TOKEN}`)

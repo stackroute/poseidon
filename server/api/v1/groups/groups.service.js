@@ -1,6 +1,7 @@
 const groups = require('./groups.entity');
 const logger = require('../../../logger');
 
+//Function to add the group Info to the object if the user is present in the database
 
 const getGroupInfo = function (event, count, project, cb) {
   if (count === 1) {

@@ -7,12 +7,14 @@ function uniqueArr(myArr) {
     .filter((value, index, self) => self.indexOf(value) === index);
 }
 
+//To remove the duplicate users with same username
 function removeDuplicates(myArr, prop) {
   const uniqueName = uniqueArr(myArr);
   return myArr.filter((obj, index) => uniqueName.indexOf(obj[prop]) === index);
 }
 
 
+//Function to attach commit info of the required member.
 const getCommitStatus = function (member, cb) {
   const obj = member;
   if (obj.forked_status === 'yes') {
